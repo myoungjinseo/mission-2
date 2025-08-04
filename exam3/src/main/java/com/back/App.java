@@ -16,13 +16,16 @@ public class App {
             if(command.equals("등록")){
                 System.out.print("명언 : ");
                 String content = sc.nextLine();
-
                 System.out.print("작가 : ");
                 String author = sc.nextLine();
-
                 WiseSayingRequest request = new WiseSayingRequest(content, author);
+
                 int id = wiseSayingController.createWiseSaying(request);
+
                 System.out.printf("%d번 명언이 등록되었습니다.\n", id);
+            } else if (command.equals("목록")){
+                String response = wiseSayingController.getWiseSaying();
+                System.out.println(response);
             }
         }
     }

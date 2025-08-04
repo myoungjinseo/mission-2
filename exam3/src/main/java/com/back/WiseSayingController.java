@@ -6,8 +6,11 @@ public class WiseSayingController {
     private final WiseSayingService wiseSayingService = new WiseSayingService();
 
     public int createWiseSaying(WiseSayingRequest request){
-
         return wiseSayingService.createWiseSaying(request);
     }
 
+
+    public String getWiseSaying() {
+        return wiseSayingService.getWiseSaying();
+    }
 }

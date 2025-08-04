@@ -16,4 +16,8 @@ public class WiseSayingRepository {
     public void createWisesSaying(WiseSaying wiseSaying) {
         wiseSayings.add(wiseSaying);
     }
+
+    public List<WiseSaying> findAll() {
+        return wiseSayings;
+    }
 }
