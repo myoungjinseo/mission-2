@@ -26,6 +26,8 @@ public class App {
             } else if (command.equals("목록")){
                 String response = wiseSayingController.getWiseSaying();
                 System.out.println(response);
+            } else if (command.contains("삭제?id=")){
+                wiseSayingController.deleteWiseSaying(command);
             }
         }
     }

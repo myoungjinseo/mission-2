@@ -35,4 +35,17 @@ public class WiseSayingService {
         Collections.reverse(reverse);
         return reverse;
     }
+
+    public String deleteWiseSaying(String command) {
+        int deleteId = getId(command);
+        int findId = wiseSayingRepository.findId(deleteId);
+        if(findId == -1)
+            return "%d번 명언이 존재하지 않습니다.".formatted(deleteId);
+        wiseSayingRepository.deleteWiseSaying(findId);
+        return "%d번 명언이 삭제되었습니다.".formatted(deleteId);
+    }
+
+    public int getId(String command){
+        return Integer.parseInt(command.split("=")[1]);
+    }
 }
