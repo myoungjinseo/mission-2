@@ -14,8 +14,7 @@ public class WiseSayingController {
         return wiseSayingService.getWiseSaying();
     }
 
-    public void deleteWiseSaying(String command){
-        String response = wiseSayingService.deleteWiseSaying(command);
-        System.out.println(response);
+    public String deleteWiseSaying(String command){
+        return wiseSayingService.deleteWiseSaying(command);
     }
 }

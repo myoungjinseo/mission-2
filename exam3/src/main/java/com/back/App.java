@@ -27,7 +27,8 @@ public class App {
                 String response = wiseSayingController.getWiseSaying();
                 System.out.println(response);
             } else if (command.contains("삭제?id=")){
-                wiseSayingController.deleteWiseSaying(command);
+                String response = wiseSayingController.deleteWiseSaying(command);
+                System.out.println(response);
             }
         }
     }
