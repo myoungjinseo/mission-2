@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingRepository {
-    List<WiseSaying> wiseSayings = new ArrayList<WiseSaying>();
+    List<WiseSaying> wiseSayings = new ArrayList<>();
     public boolean emptyByWiseSaying() {
         return wiseSayings.isEmpty();
     }
@@ -13,7 +13,7 @@ public class WiseSayingRepository {
         return wiseSayings.getLast().getId();
     }
 
-    public void createWisesSaying(WiseSaying wiseSaying) {
+    public void save(WiseSaying wiseSaying) {
         wiseSayings.add(wiseSaying);
     }
 
@@ -21,7 +21,7 @@ public class WiseSayingRepository {
         return wiseSayings;
     }
 
-    public int findId(int id) {
+    public int findIdById(int id) {
         for (int i = 0; i < wiseSayings.size(); i++) {
             if (wiseSayings.get(i).getId() == id) {
                 return i;
@@ -30,7 +30,17 @@ public class WiseSayingRepository {
         return -1;
     }
 
-    public void deleteWiseSaying(int findId) {
+    public WiseSaying findById(int id) {
+        String author = wiseSayings.get(id).getAuthor();
+        String content = wiseSayings.get(id).getContent();
+        return new WiseSaying(id, author, content);
+    }
+
+    public void deleteById(int findId) {
         wiseSayings.remove(findId);
+    }
+
+    public void update(int id, WiseSaying wiseSaying) {
+        wiseSayings.set(id,wiseSaying);
     }
 }

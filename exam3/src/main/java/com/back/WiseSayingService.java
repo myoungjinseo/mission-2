@@ -1,6 +1,7 @@
 package com.back;
 
 import com.back.dto.request.WiseSayingRequest;
+import com.back.dto.response.WiseSayingResponse;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +15,7 @@ public class WiseSayingService {
         if(!wiseSayingRepository.emptyByWiseSaying())
             lastId = wiseSayingRepository.findLastId();
         WiseSaying wiseSaying = new WiseSaying(lastId + 1, request.content(), request.author());
-        wiseSayingRepository.createWisesSaying(wiseSaying);
+        wiseSayingRepository.save(wiseSaying);
         return wiseSaying.getId();
     }
 
@@ -38,14 +39,34 @@ public class WiseSayingService {
 
     public String deleteWiseSaying(String command) {
         int deleteId = getId(command);
-        int findId = wiseSayingRepository.findId(deleteId);
+        int findId = wiseSayingRepository.findIdById(deleteId);
         if(findId == -1)
             return "%d번 명언이 존재하지 않습니다.".formatted(deleteId);
-        wiseSayingRepository.deleteWiseSaying(findId);
+        wiseSayingRepository.deleteById(findId);
         return "%d번 명언이 삭제되었습니다.".formatted(deleteId);
     }
 
     public int getId(String command){
         return Integer.parseInt(command.split("=")[1]);
+    }
+
+    public String updateWiseSaying(int updateId, WiseSayingRequest request) {
+        int findId = wiseSayingRepository.findIdById(updateId);
+        WiseSaying wiseSaying = WiseSayingRequest.toEntity(updateId, request);
+        wiseSayingRepository.update(findId,wiseSaying);
+        return "";
+    }
+
+
+    public WiseSayingResponse getWiseSayingById(String command) {
+        int updateId = getId(command);
+        int findId = wiseSayingRepository.findIdById(updateId);
+        String errorMsg = null;
+        if(findId == -1){
+            errorMsg = "%d번 명언이 존재하지 않습니다.".formatted(updateId);
+            return WiseSayingResponse.of(updateId,null,errorMsg);
+        }
+        WiseSaying wiseSaying = wiseSayingRepository.findById(findId);
+        return WiseSayingResponse.of(updateId,wiseSaying,errorMsg);
     }
 }
