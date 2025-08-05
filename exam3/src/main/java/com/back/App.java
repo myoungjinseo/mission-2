@@ -47,6 +47,8 @@ public class App {
             } else if (command.equals("빌드")){
                 String msg = wiseSayingController.createAllWiseSayingJson();
                 System.out.println(msg);
+            } else {
+                System.out.println("명령어가 존재하지 않습니다.");
             }
         }
         System.out.println("프로그램 다시 시작\n");
