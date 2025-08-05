@@ -3,12 +3,14 @@ package com.back;
 import com.back.dto.request.WiseSayingRequest;
 import com.back.dto.response.WiseSayingResponse;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
     private final WiseSayingController wiseSayingController = new WiseSayingController();
     private final Scanner sc = new Scanner(System.in);
-    public void run() {
+    public void run() throws IOException {
+        wiseSayingController.initializeFiles();
         String command = "";
         System.out.println("== 명언 앱 ==");
         while (!command.equals("종료")){
@@ -44,5 +46,8 @@ public class App {
                 }
             }
         }
+        System.out.println("프로그램 다시 시작\n");
+        System.out.println("명령) 목록");
+        wiseSayingController.createWiseSayingJson();
     }
 }

@@ -3,6 +3,9 @@ package com.back;
 import com.back.dto.request.WiseSayingRequest;
 import com.back.dto.response.WiseSayingResponse;
 
+import javax.imageio.IIOException;
+import java.io.IOException;
+
 public class WiseSayingController {
     private final WiseSayingService wiseSayingService = new WiseSayingService();
 
@@ -30,5 +33,14 @@ public class WiseSayingController {
             return null;
         }
         return response;
+    }
+
+    public void createWiseSayingJson() throws IOException {
+        System.out.println(wiseSayingService.getWiseSaying());
+        wiseSayingService.createWiseSayingJson();
+    }
+
+    public void initializeFiles() {
+        wiseSayingService.initializeFiles();
     }
 }

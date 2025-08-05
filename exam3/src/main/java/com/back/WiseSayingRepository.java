@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingRepository {
-    List<WiseSaying> wiseSayings = new ArrayList<>();
+    private final List<WiseSaying> wiseSayings = new ArrayList<>();
     public boolean emptyByWiseSaying() {
         return wiseSayings.isEmpty();
     }
@@ -42,5 +42,9 @@ public class WiseSayingRepository {
 
     public void update(int id, WiseSaying wiseSaying) {
         wiseSayings.set(id,wiseSaying);
+    }
+
+    public int getLastId() {
+        return wiseSayings.getLast().getId();
     }
 }
