@@ -44,6 +44,9 @@ public class App {
                     WiseSayingRequest request = new WiseSayingRequest(updateContent, updateAuthor);
                     wiseSayingController.updateWiseSaying(response.findId(),request);
                 }
+            } else if (command.equals("빌드")){
+                String msg = wiseSayingController.createAllWiseSayingJson();
+                System.out.println(msg);
             }
         }
         System.out.println("프로그램 다시 시작\n");

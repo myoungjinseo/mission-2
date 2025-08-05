@@ -1,6 +1,5 @@
 package com.back;
 
-import javax.imageio.IIOException;
 import java.io.IOException;
 
 public class Main {

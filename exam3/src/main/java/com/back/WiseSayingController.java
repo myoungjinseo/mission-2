@@ -3,7 +3,6 @@ package com.back;
 import com.back.dto.request.WiseSayingRequest;
 import com.back.dto.response.WiseSayingResponse;
 
-import javax.imageio.IIOException;
 import java.io.IOException;
 
 public class WiseSayingController {
@@ -42,5 +41,10 @@ public class WiseSayingController {
 
     public void initializeFiles() {
         wiseSayingService.initializeFiles();
+    }
+
+    public String createAllWiseSayingJson() throws IOException {
+        wiseSayingService.createAllWiseSayingJson();
+        return "data.json 파일의 내용이 갱신되었습니다.";
     }
 }
